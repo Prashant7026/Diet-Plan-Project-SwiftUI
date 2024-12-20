@@ -35,6 +35,7 @@ struct RecipesCellView: View {
                 .frame(height: 130.0)
                 .padding(.leading, 8.0)
                 .background(Color(red: 245.0/255.0, green: 242.0/255.0, blue: 255.0/255.0))
+                .cornerRadius(12.0)
                 .overlay{
                     RoundedRectangle(cornerRadius: 12.0)
                         .stroke(Color(red: 206.0/255.0, green: 194.0/255.0, blue: 255.0/255.0), lineWidth: 1.5)
@@ -140,6 +141,7 @@ struct RecipesCellView: View {
         .padding(.vertical, 6.0)
         .padding(.horizontal, 9.5)
         .background(Color.clear)
+        .cornerRadius(33.0)
         .overlay(content: {
             RoundedRectangle(cornerRadius: 33.0)
                 .stroke(Color(red: 76.0/255.0, green: 88.0/255.0, blue: 217.0/255.0), lineWidth: 1.0)

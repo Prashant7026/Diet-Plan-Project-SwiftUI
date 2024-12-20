@@ -18,6 +18,7 @@ struct SearchAndFilterView: View {
             }
             .padding(.vertical, 11.0)
             .padding(.horizontal, 10.0)
+            .cornerRadius(10.0)
             .overlay {
                 RoundedRectangle(cornerRadius: 10.0)
                     .stroke(Color.gray, lineWidth: 1.0)

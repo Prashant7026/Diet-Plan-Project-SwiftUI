@@ -12,7 +12,10 @@ class DietPlanHomeViewModel: ObservableObject {
     
     func call() async throws {
         do {
-            self.apiData = try await AppNetworking.sharedInstance.apiCall(StringConstants.sharedInstance.apiEndPoint)
+            let fetchedData = try await AppNetworking.sharedInstance.apiCall(StringConstants.sharedInstance.apiEndPoint)
+            DispatchQueue.main.async {
+                self.apiData = fetchedData
+            }
         } catch {
             print("Error ->", error.localizedDescription)
             throw error

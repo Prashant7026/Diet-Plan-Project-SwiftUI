@@ -18,7 +18,7 @@ struct FooterDoubleButtonView: View {
     }
     
     private func fedButtonView() -> some View{
-        Text("Fed?")
+        Text("\(StringConstants.sharedInstance.fedText)?")
             .foregroundColor(Color.white)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
@@ -31,7 +31,7 @@ struct FooterDoubleButtonView: View {
     }
     
     private func cancelButtonView() -> some View{
-        Text("Cancel")
+        Text(StringConstants.sharedInstance.cancelText)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .center)

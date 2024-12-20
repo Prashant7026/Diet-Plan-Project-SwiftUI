@@ -12,7 +12,7 @@ struct SearchAndFilterView: View {
         HStack(spacing: 24.0) {
             HStack{
                 AppImageProvider.searchMagnifyingIcon
-                TextField("Search Meals", text: .constant(""))
+                TextField(StringConstants.sharedInstance.searchBarPlaceholder, text: .constant(""))
                     .frame(maxWidth: .infinity)
                     .frame(height: 18.0)
             }

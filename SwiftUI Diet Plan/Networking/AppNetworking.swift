@@ -20,8 +20,7 @@ final class AppNetworking {
         let (data, _) = try await URLSession.shared.data(from: url)
         
         do {
-            let decodedData = try JSONDecoder().decode(DietPlanModel.self, from: data)
-            return decodedData
+            return try JSONDecoder().decode(DietPlanModel.self, from: data)
         } catch {
             throw NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: "Failed to decode data."])
         }

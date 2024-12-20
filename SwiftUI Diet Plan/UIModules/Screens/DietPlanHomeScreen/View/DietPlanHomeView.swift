@@ -20,17 +20,20 @@ struct DietPlanHomeView: View {
         NavigationView {
             VStack{
                 ScrollView {
-                    if let data = dietPlanData{
+                    if dietPlanData != nil{
                         VStack {
                             Spacer()
                                 .frame(height: 16.0)
                             HeaderView()
+                                .padding(.horizontal, 16.0)
                             Spacer()
                                 .frame(height: 18.0)
                             DietStreakView(dietPlanData?.diets.dietStreak)
+                                .padding(.horizontal, 16.0)
                             Spacer()
                                 .frame(height: 27.0)
                             SearchAndFilterView()
+                                .padding(.horizontal, 16.0)
                             Spacer()
                                 .frame(height: 24.0)
                             
@@ -39,9 +42,8 @@ struct DietPlanHomeView: View {
                             Spacer()
                             
                         }
-                        .padding(.horizontal, 16.0)
                     } else {
-                        ProgressView("Loading...")
+                        ProgressView(StringConstants.sharedInstance.showLoadingtext)
                     }
                 }
                 
@@ -94,18 +96,19 @@ struct DietPlanHomeView: View {
                     switch diets[index].daytime {
                     case .morningMeals:
                         recipesView(diets[index])
-                        Divider()
-                            .padding(.vertical, 23.0)
+                            .padding(.horizontal, 16.0)
+                        dividerView()
                     case .afternoonMeals:
                         recipesView(diets[index])
-                        Divider()
-                            .padding(.vertical, 23.0)
+                            .padding(.horizontal, 16.0)
+                        dividerView()
                     case .eveningMeals:
                         recipesView(diets[index])
-                        Divider()
-                            .padding(.vertical, 23.0)
+                            .padding(.horizontal, 16.0)
+                        dividerView()
                     case .nightMeals:
                         recipesView(diets[index])
+                            .padding(.horizontal, 16.0)
                     }
                 }
             } else {
@@ -114,9 +117,16 @@ struct DietPlanHomeView: View {
         }
     }
     
+    private func dividerView() -> some View {
+        Divider()
+            .frame(height: 5)
+            .background(Color(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0))
+            .padding(.vertical, 23.0)
+    }
+    
     private func recipesView(_ diet: AllDiet) -> some View {
         Group{
-            mealView(diet.daytime)
+            mealView(diet)
             ForEach(diet.recipes.indices, id: \.self){ index in
                 RecipesCellView(selectAllClicked: Binding(
                     get: { selectAllBtnClicked[diet.daytime] ?? false },
@@ -126,11 +136,11 @@ struct DietPlanHomeView: View {
         }
     }
     
-    private func mealView(_ dayTime: Daytime) -> some View {
+    private func mealView(_ diet: AllDiet) -> some View {
         Group{
-            MealPeriodStatusView(mealDayTime: dayTime)
+            MealPeriodStatusView(mealDayTime: diet.daytime, mealTiming: diet.timings, progressStatus: diet.progressStatus)
             
-            selectAllButton(dayTime)
+            selectAllButton(diet.daytime)
             Spacer()
                 .frame(height: 11.0)
         }
@@ -155,7 +165,7 @@ struct DietPlanHomeView: View {
                         }
                         .frame(width: 19.0, height: 19.0)
                 }
-                Text("Select All")
+                Text(StringConstants.sharedInstance.selectAllText)
                     .foregroundColor(Color.black)
                     .bold()
             }

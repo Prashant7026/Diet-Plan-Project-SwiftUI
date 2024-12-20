@@ -11,9 +11,10 @@ struct HeaderView: View {
     var body: some View {
         HStack{
             VStack(alignment: .leading, spacing: 4.0) {
-                Text("Everyday Diet Plan")
-                    .bold()
-                Text("Track Ananya’s every meal")
+                Text(StringConstants.sharedInstance.appTitle)
+                    .font(.headline)
+                Text(StringConstants.sharedInstance.appSubTitle)
+                    .font(.caption)
                     .foregroundColor(Color(red: 113.0/255.0, green: 113.0/255.0, blue: 113.0/255.0))
             }
             Spacer()
@@ -39,7 +40,8 @@ struct HeaderView: View {
                     AppImageProvider.cartIcon
                 }
             }
-            Text("Grocery List")
+            Text(StringConstants.sharedInstance.groceryListText)
+                .font(.caption)
         }
     }
 }

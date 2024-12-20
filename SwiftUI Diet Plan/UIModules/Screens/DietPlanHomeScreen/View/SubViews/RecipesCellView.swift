@@ -22,7 +22,7 @@ struct RecipesCellView: View {
             VStack(spacing: 8.0) {
                 
                 Text(TimeFormatter.formatTo12Hour(timeSlot: cellData.timeSlot))
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color(red: 113.0/255.0, green: 113.0/255.0, blue: 113.0/255.0))
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -32,7 +32,7 @@ struct RecipesCellView: View {
                         .padding(.top, 8.0)
                 }
                 .frame(maxWidth: .infinity)
-                .aspectRatio(2.38, contentMode: .fit)
+                .frame(height: 130.0)
                 .padding(.leading, 8.0)
                 .background(Color(red: 245.0/255.0, green: 242.0/255.0, blue: 255.0/255.0))
                 .overlay{
@@ -60,8 +60,9 @@ struct RecipesCellView: View {
                 .resizable()
                 .scaledToFill()
         }
-        .frame(width: 109.0, height: 114.0)
+        .frame(width: 109.0)
         .cornerRadius(8.0)
+        .padding(.vertical, 8.0)
         .clipped()
     }
     
@@ -69,6 +70,7 @@ struct RecipesCellView: View {
         VStack(alignment: .leading) {
             HStack(spacing: 8.0) {
                 Text(cellData.title)
+                    .lineLimit(0)
                 Spacer()
                 AppImageProvider.heartIcon
             }
@@ -108,7 +110,7 @@ struct RecipesCellView: View {
     private func customizeButtonView() -> some View {
         HStack {
             AppImageProvider.customizeIcon
-            Text("Customize")
+            Text(StringConstants.sharedInstance.customizeText)
                 .foregroundColor(Color.white)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
@@ -127,7 +129,7 @@ struct RecipesCellView: View {
                 .scaledToFit()
                 .frame(maxHeight: 16.0)
             HStack(spacing: 0.0){
-                Text("Fed")
+                Text(StringConstants.sharedInstance.fedText)
                 Text(cellData.isCompleted == 1 ? "" : "?")
             }
                 .minimumScaleFactor(0.5)
@@ -147,5 +149,5 @@ struct RecipesCellView: View {
 }
 
 //#Preview {
-//    RecipesCellView(selectAllClicked: .constant(true))
+//    RecipesCellView()
 //}

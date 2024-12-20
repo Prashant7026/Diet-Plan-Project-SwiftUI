@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DietStreakView: View {
-    private let dayPeriods = ["Morning", "Afternoon", "Evening", "Night"]
+    private let dayPeriods = StringConstants.sharedInstance.dayPeriodArray
     private let dayPeriodsIcons = [AppImageProvider.morningIcon, AppImageProvider.afternoonIcon, AppImageProvider.eveningIcon, AppImageProvider.nightIcon]
     private var dietStreak: [DietStreak]?
     
@@ -37,8 +37,8 @@ struct DietStreakView: View {
     
     private func topView() -> some View {
         HStack{
-            Text("Diet Streak")
-                .bold()
+            Text(StringConstants.sharedInstance.dietStreakText)
+                .font(.headline)
             Spacer()
             streakView()
         }

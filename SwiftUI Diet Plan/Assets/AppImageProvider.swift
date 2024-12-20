@@ -15,5 +15,9 @@ public struct AppImageProvider {
     public static let afternoonIcon = Image("afternoonIcon")
     public static let eveningIcon = Image("eveningIcon")
     public static let nightIcon = Image("nightIcon")
-    
+    public static let filterIcon = Image("filterIcon")
+    public static let searchMagnifyingIcon = Image("searchMagnifyingIcon")
+    public static let clockImage = Image("clockImage")
+    public static let customizeIcon = Image("customizeIcon")
+    public static let heartIcon = Image("heartIcon")
 }

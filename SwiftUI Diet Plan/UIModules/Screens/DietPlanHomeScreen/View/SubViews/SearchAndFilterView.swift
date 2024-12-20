@@ -9,14 +9,20 @@ import SwiftUI
 
 struct SearchAndFilterView: View {
     var body: some View {
-        HStack{
-            TextField("Search Meals", text: .constant(""))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40.0)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .stroke(Color.gray, lineWidth: 1.0)
-                }
+        HStack(spacing: 24.0) {
+            HStack{
+                AppImageProvider.searchMagnifyingIcon
+                TextField("Search Meals", text: .constant(""))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 18.0)
+            }
+            .padding(.vertical, 11.0)
+            .padding(.horizontal, 10.0)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10.0)
+                    .stroke(Color.gray, lineWidth: 1.0)
+            }
+            AppImageProvider.filterIcon
         }
         .frame(maxWidth: .infinity)
     }

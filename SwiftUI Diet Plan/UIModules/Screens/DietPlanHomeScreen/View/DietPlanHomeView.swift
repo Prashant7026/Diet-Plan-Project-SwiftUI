@@ -71,6 +71,7 @@ struct DietPlanHomeView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func backArrowButton() -> some View {

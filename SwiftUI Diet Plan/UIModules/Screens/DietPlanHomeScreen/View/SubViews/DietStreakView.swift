@@ -84,9 +84,9 @@ struct DietStreakView: View {
             case .current:
                 AppImageProvider.afternoonIcon
             case .upcoming:
-                AppImageProvider.eveningIcon
-            case nil:
                 AppImageProvider.nightIcon
+            case nil:
+                AppImageProvider.eveningIcon
             }
         }
     }
